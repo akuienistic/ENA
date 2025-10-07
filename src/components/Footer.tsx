@@ -120,18 +120,28 @@ const Footer = () => {
               </p>
             </div>
           </div>
+
+          {/* Admin */}
+          <div>
+            <h3 className="font-heading font-semibold text-lg mb-4">Admin</h3>
+            <div className="space-y-2">
+              <Link
+                to="/admin"
+                className="text-muted-foreground hover:text-primary transition-colors text-sm block"
+              >
+                Login to Dashboard
+              </Link>
+            </div>
+          </div>
         </div>
 
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-border">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-muted-foreground text-sm text-center md:text-left">
+          <div className="flex flex-col items-center space-y-4 text-center">
+            <p className="text-muted-foreground text-sm">
               © {currentYear} ENA - Education Needs All. All rights reserved.
             </p>
-            <div className="flex flex-col items-center md:items-end space-y-2">
-              <p className="text-muted-foreground text-sm flex items-center gap-1">
-                Made with <Heart size={14} className="text-secondary fill-secondary" /> for South Sudanese youth
-              </p>
+            <div className="flex flex-col items-center space-y-2">
               <p className="text-muted-foreground text-sm">
                 Designed and Built by{" "}
                 <a

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Navigation = () => {
@@ -48,8 +48,15 @@ const Navigation = () => {
             ))}
           </div>
 
-          {/* CTA Button */}
-          <div className="hidden md:block">
+          {/* Admin Login Link & CTA Button */}
+          <div className="hidden md:flex items-center space-x-3">
+            <Link
+              to="/admin"
+              className="text-sm text-muted-foreground hover:text-primary transition-colors px-3 py-2 flex items-center gap-1"
+            >
+              <Shield className="w-4 h-4" />
+              Admin Login Portal
+            </Link>
             <Button asChild className="shadow-md hover:scale-105 hover:shadow-lg transition-all">
               <Link to="/blog">Find Scholarships</Link>
             </Button>
@@ -82,6 +89,13 @@ const Navigation = () => {
                 {link.name}
               </Link>
             ))}
+            <Link
+              to="/admin"
+              onClick={() => setIsOpen(false)}
+              className="block px-4 py-3 text-sm text-muted-foreground hover:text-primary transition-colors"
+            >
+              Admin Login
+            </Link>
             <Button asChild className="w-full mt-4">
               <Link to="/blog" onClick={() => setIsOpen(false)}>
                 Find Scholarships
