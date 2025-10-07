@@ -52,7 +52,8 @@ const Footer = () => {
               <span className="font-heading font-bold text-2xl text-foreground">ENA</span>
             </div>
             <p className="text-muted-foreground text-sm leading-relaxed">
-              Empowering underprivileged South Sudanese youth through education, leadership, and scholarship opportunities.
+              Empowering underprivileged South Sudanese youth through education, leadership, and scholarship
+              opportunities.
             </p>
             <div className="flex space-x-3">
               {socialLinks.map((social) => (
@@ -76,10 +77,7 @@ const Footer = () => {
             <ul className="space-y-2">
               {footerLinks.quickLinks.map((link) => (
                 <li key={link.path}>
-                  <Link
-                    to={link.path}
-                    className="text-muted-foreground hover:text-primary transition-colors text-sm"
-                  >
+                  <Link to={link.path} className="text-muted-foreground hover:text-primary transition-colors text-sm">
                     {link.name}
                   </Link>
                 </li>
@@ -93,10 +91,7 @@ const Footer = () => {
             <ul className="space-y-2">
               {footerLinks.community.map((link) => (
                 <li key={link.name}>
-                  <Link
-                    to={link.path}
-                    className="text-muted-foreground hover:text-primary transition-colors text-sm"
-                  >
+                  <Link to={link.path} className="text-muted-foreground hover:text-primary transition-colors text-sm">
                     {link.name}
                   </Link>
                 </li>
@@ -115,9 +110,7 @@ const Footer = () => {
                 <Mail size={16} />
                 <span>info@ena-community.org</span>
               </a>
-              <p className="text-muted-foreground text-sm">
-                South Sudan
-              </p>
+              <p className="text-muted-foreground text-sm">South Sudan</p>
             </div>
           </div>
 
@@ -125,10 +118,7 @@ const Footer = () => {
           <div>
             <h3 className="font-heading font-semibold text-lg mb-4">Admin</h3>
             <div className="space-y-2">
-              <Link
-                to="/admin"
-                className="text-muted-foreground hover:text-primary transition-colors text-sm block"
-              >
+              <Link to="/admin" className="text-muted-foreground hover:text-primary transition-colors text-sm block">
                 Login to Dashboard
               </Link>
             </div>
@@ -145,7 +135,7 @@ const Footer = () => {
               <p className="text-muted-foreground text-sm">
                 Designed and Built by{" "}
                 <a
-                  href="https://www.linkedin.com/in/simon-akuien-atem"
+                  href="https://www.linkedin.com/in/simon-akuien-atem-710895290/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-primary hover:underline font-medium transition-colors"

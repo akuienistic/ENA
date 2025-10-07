@@ -19,7 +19,9 @@ import {
   Calendar,
   Tag,
   Image,
-  Eye
+  Eye,
+  Upload,
+  X
 } from "lucide-react";
 
 interface BlogPost {
@@ -39,6 +41,8 @@ const AdminDashboard = () => {
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [isEditing, setIsEditing] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [imagePreview, setImagePreview] = useState<string>("");
   const [formData, setFormData] = useState({
     title: "",
     content: "",
@@ -64,6 +68,23 @@ const AdminDashboard = () => {
     logout();
   };
 
+  const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setSelectedFile(file);
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setImagePreview(e.target?.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const removeImage = () => {
+    setSelectedFile(null);
+    setImagePreview("");
+  };
+
   const resetForm = () => {
     setFormData({
       title: "",
@@ -74,11 +95,13 @@ const AdminDashboard = () => {
       imageUrl: "",
       published: false
     });
+    setSelectedFile(null);
+    setImagePreview("");
     setIsEditing(false);
     setEditingId(null);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
     setSuccess("");
@@ -86,6 +109,22 @@ const AdminDashboard = () => {
     if (!formData.title || !formData.content || !formData.excerpt) {
       setError("Please fill in all required fields");
       return;
+    }
+
+    let imageUrl = formData.imageUrl;
+
+    // Handle file upload
+    if (selectedFile) {
+      try {
+        imageUrl = await new Promise((resolve) => {
+          const reader = new FileReader();
+          reader.onload = (e) => resolve(e.target?.result as string);
+          reader.readAsDataURL(selectedFile);
+        });
+      } catch (err) {
+        setError("Failed to process image file");
+        return;
+      }
     }
 
     const now = new Date().toISOString();
@@ -98,7 +137,7 @@ const AdminDashboard = () => {
       excerpt: formData.excerpt,
       category: formData.category,
       tags: postTags,
-      imageUrl: formData.imageUrl,
+      imageUrl: imageUrl,
       published: formData.published,
       createdAt: editingId ? posts.find(p => p.id === editingId)?.createdAt || now : now,
       updatedAt: now
@@ -127,6 +166,8 @@ const AdminDashboard = () => {
       imageUrl: post.imageUrl,
       published: post.published
     });
+    setImagePreview(post.imageUrl);
+    setSelectedFile(null);
     setIsEditing(true);
     setEditingId(post.id);
   };
@@ -252,13 +293,49 @@ const AdminDashboard = () => {
                   </div>
 
                   <div>
-                    <Label htmlFor="imageUrl">Image URL</Label>
-                    <Input
-                      id="imageUrl"
-                      value={formData.imageUrl}
-                      onChange={(e) => setFormData(prev => ({ ...prev, imageUrl: e.target.value }))}
-                      placeholder="https://example.com/image.jpg"
-                    />
+                    <Label htmlFor="image">Featured Image</Label>
+                    <div className="space-y-4">
+                      {!imagePreview ? (
+                        <div className="border-2 border-dashed border-muted-foreground/25 rounded-lg p-6 text-center">
+                          <Upload className="w-8 h-8 mx-auto mb-2 text-muted-foreground" />
+                          <div className="space-y-2">
+                            <Label htmlFor="image" className="cursor-pointer">
+                              <span className="text-sm font-medium text-primary hover:underline">
+                                Click to upload
+                              </span>
+                              <span className="text-sm text-muted-foreground"> or drag and drop</span>
+                            </Label>
+                            <p className="text-xs text-muted-foreground">
+                              PNG, JPG, GIF up to 5MB
+                            </p>
+                          </div>
+                          <Input
+                            id="image"
+                            type="file"
+                            accept="image/*"
+                            onChange={handleFileSelect}
+                            className="hidden"
+                          />
+                        </div>
+                      ) : (
+                        <div className="relative">
+                          <img
+                            src={imagePreview}
+                            alt="Preview"
+                            className="w-full h-48 object-cover rounded-lg"
+                          />
+                          <Button
+                            type="button"
+                            variant="destructive"
+                            size="sm"
+                            className="absolute top-2 right-2"
+                            onClick={removeImage}
+                          >
+                            <X className="w-4 h-4" />
+                          </Button>
+                        </div>
+                      )}
+                    </div>
                   </div>
 
                   <div className="flex items-center space-x-2">

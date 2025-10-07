@@ -39,24 +39,32 @@ const About = () => {
 
   const team = [
     {
-      name: "Founder & Director",
-      role: "Leadership & Strategy",
-      initials: "FD",
+      name: "Simon Akuien Atem",
+      role: "Founder & Director",
+      description: "Visionary leader driving ENA's mission to empower South Sudanese youth through education and opportunity access.",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face&auto=format",
+      linkedin: "#",
     },
     {
-      name: "Scholarship Coordinator",
-      role: "Opportunity Research",
-      initials: "SC",
+      name: "Dr. Mary Wani",
+      role: "Scholarship Coordinator",
+      description: "Expert in identifying and curating scholarship opportunities from around the world for our community members.",
+      image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face&auto=format",
+      linkedin: "#",
     },
     {
-      name: "Community Manager",
-      role: "Engagement & Support",
-      initials: "CM",
+      name: "James Lual",
+      role: "Community Manager",
+      description: "Building and nurturing our vibrant community across WhatsApp, Facebook, and LinkedIn platforms.",
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face&auto=format",
+      linkedin: "#",
     },
     {
-      name: "Content Creator",
-      role: "Educational Content",
-      initials: "CC",
+      name: "Sarah Nyibol",
+      role: "Content Creator",
+      description: "Creating engaging educational content and success stories that inspire our community members.",
+      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face&auto=format",
+      linkedin: "#",
     },
   ];
 
@@ -69,6 +77,11 @@ const About = () => {
         <section className="bg-gradient-to-br from-primary/10 via-accent/10 to-background py-16 md:py-24">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mx-auto text-center space-y-6 animate-fade-in">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/20 border border-accent/30">
+                <Users size={18} className="text-primary" />
+                <span className="text-sm font-medium">Founded 2024 • 500+ Youth Empowered</span>
+              </div>
+
               <h1 className="font-heading font-bold">About ENA</h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
                 Education Needs All is a youth empowerment initiative dedicated to bridging the education gap for underprivileged South Sudanese youth through access to scholarships, mentorship, and community support.
@@ -170,22 +183,27 @@ const About = () => {
               </p>
             </div>
 
-            <div className="max-w-4xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               {team.map((member, index) => (
                 <Card
                   key={index}
-                  className="p-6 text-center hover:shadow-md transition-shadow"
+                  className="p-6 text-center hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
                 >
-                  <div className="w-20 h-20 rounded-full bg-primary flex items-center justify-center mx-auto mb-4">
-                    <span className="text-primary-foreground font-bold text-2xl">
-                      {member.initials}
-                    </span>
+                  <div className="w-24 h-24 rounded-full overflow-hidden mx-auto mb-4 ring-2 ring-primary/20">
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
-                  <h3 className="font-heading font-semibold text-lg mb-1">
+                  <h3 className="font-heading font-semibold text-lg mb-2">
                     {member.name}
                   </h3>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-sm font-medium text-primary mb-2">
                     {member.role}
+                  </p>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {member.description}
                   </p>
                 </Card>
               ))}

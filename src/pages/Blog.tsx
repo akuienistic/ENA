@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Search, Calendar, ArrowRight } from "lucide-react";
+import { Search, Calendar, ArrowRight, BookOpen } from "lucide-react";
 import { Link } from "react-router-dom";
 import blogStudy from "@/assets/blog-study.jpg";
 import blogNetworking from "@/assets/blog-networking.jpg";
@@ -88,6 +88,11 @@ const Blog = () => {
         <section className="bg-gradient-to-br from-primary/10 via-accent/10 to-background py-16 md:py-24">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mx-auto text-center space-y-6 animate-fade-in">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/20 border border-accent/30">
+                <BookOpen size={18} className="text-primary" />
+                <span className="text-sm font-medium">100+ Scholarships Available</span>
+              </div>
+
               <h1 className="font-heading font-bold">Scholarships & Resources</h1>
               <p className="text-xl text-muted-foreground">
                 Your gateway to education opportunities, application guides, and motivational stories

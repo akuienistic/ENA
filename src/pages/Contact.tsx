@@ -88,6 +88,11 @@ const Contact = () => {
         <section className="bg-gradient-to-br from-primary/10 via-accent/10 to-background py-16 md:py-24">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mx-auto text-center space-y-6 animate-fade-in">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/20 border border-accent/30">
+                <MessageSquare size={18} className="text-primary" />
+                <span className="text-sm font-medium">We respond within 24 hours</span>
+              </div>
+
               <h1 className="font-heading font-bold">Get in Touch</h1>
               <p className="text-xl text-muted-foreground">
                 Have questions about scholarships, need guidance, or want to collaborate? We're here to help!
