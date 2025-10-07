@@ -194,7 +194,7 @@ const AdminDashboard = () => {
                 <span className="text-primary-foreground font-heading font-bold text-xl">E</span>
               </div>
               <div>
-                <h1 className="text-2xl font-heading font-bold">Admin Dashboard</h1>
+                <h1 className="text-2xl font-heading font-bold text-muted-foreground">Admin Dashboard</h1>
                 <p className="text-muted-foreground">Manage your blog posts</p>
               </div>
             </div>
