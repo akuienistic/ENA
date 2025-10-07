@@ -19,7 +19,7 @@ const samplePosts = [
     excerpt: "Discover comprehensive scholarship opportunities covering tuition, accommodation, and living expenses for African students.",
     category: "Scholarships",
     date: "2025-01-15",
-    image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&q=80",
+    image: blogStudy,
   },
   {
     id: 2,
@@ -27,7 +27,7 @@ const samplePosts = [
     excerpt: "Learn proven strategies and tips to craft compelling scholarship essays that stand out from the competition.",
     category: "Guides",
     date: "2025-01-12",
-    image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=800&q=80",
+    image: blogNetworking,
   },
   {
     id: 3,
@@ -35,7 +35,7 @@ const samplePosts = [
     excerpt: "A curated list of the best scholarship opportunities specifically available for South Sudanese youth in 2025.",
     category: "Scholarships",
     date: "2025-01-10",
-    image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&q=80",
+    image: blogStudy,
   },
   {
     id: 4,

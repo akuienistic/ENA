@@ -2,6 +2,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Target, Heart, Users, BookOpen, Lightbulb, Shield } from "lucide-react";
+import placeholderProfile from "/placeholder.svg";
 
 const About = () => {
   const values = [
@@ -39,31 +40,31 @@ const About = () => {
 
   const team = [
     {
-      name: "Simon Akuien Atem",
+      name: "Jacob Deng Bol",
       role: "Founder & Director",
       description: "Visionary leader driving ENA's mission to empower South Sudanese youth through education and opportunity access.",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face&auto=format",
+      image: placeholderProfile,
       linkedin: "#",
     },
     {
       name: "Dr. Mary Wani",
       role: "Scholarship Coordinator",
       description: "Expert in identifying and curating scholarship opportunities from around the world for our community members.",
-      image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face&auto=format",
+      image: placeholderProfile,
       linkedin: "#",
     },
     {
       name: "James Lual",
       role: "Community Manager",
       description: "Building and nurturing our vibrant community across WhatsApp, Facebook, and LinkedIn platforms.",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face&auto=format",
+      image: placeholderProfile,
       linkedin: "#",
     },
     {
       name: "Sarah Nyibol",
       role: "Content Creator",
       description: "Creating engaging educational content and success stories that inspire our community members.",
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face&auto=format",
+      image: placeholderProfile,
       linkedin: "#",
     },
   ];

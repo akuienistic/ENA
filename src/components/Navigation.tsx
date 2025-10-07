@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Shield, Sun, Moon } from "lucide-react";
+import { Menu, X, Shield, Sun, Moon, Home, GraduationCap, Users, Info, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Navigation = () => {
@@ -19,11 +19,11 @@ const Navigation = () => {
   };
 
   const navLinks = [
-    { name: "Home", path: "/" },
-    { name: "Scholarships", path: "/blog" },
-    { name: "Community", path: "/community" },
-    { name: "About", path: "/about" },
-    { name: "Contact", path: "/contact" },
+    { name: "Home", path: "/", icon: Home },
+    { name: "Scholarships", path: "/blog", icon: GraduationCap },
+    { name: "Community", path: "/community", icon: Users },
+    { name: "About", path: "/about", icon: Info },
+    { name: "Contact", path: "/contact", icon: Mail },
   ];
 
   const isActive = (path: string) => location.pathname === path;
@@ -48,13 +48,16 @@ const Navigation = () => {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`px-4 py-2 rounded-lg font-medium transition-all ${
+                className={`relative px-4 py-2 font-medium transition-all ${
                   isActive(link.path)
-                    ? "bg-primary text-primary-foreground"
-                    : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                    ? "text-primary"
+                    : "text-muted-foreground hover:text-foreground"
                 }`}
               >
                 {link.name}
+                {isActive(link.path) && (
+                  <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-4/5 h-0.5 bg-primary rounded-full animate-pulse"></span>
+                )}
               </Link>
             ))}
             {/* Theme Toggle */}
@@ -102,33 +105,40 @@ const Navigation = () => {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden py-4 space-y-2 animate-fade-in">
-            {navLinks.map((link) => (
+          <div className="md:hidden absolute top-16 right-0 w-56 max-w-[45vw] bg-background/95 backdrop-blur-sm border-l border-border shadow-lg animate-fade-in overflow-hidden">
+            <div className="py-4 space-y-2">
+              {navLinks.map((link) => {
+                const IconComponent = link.icon;
+                return (
+                  <Link
+                    key={link.path}
+                    to={link.path}
+                    onClick={() => setIsOpen(false)}
+                    className={`flex items-center gap-3 px-4 py-3 font-medium transition-all ${
+                      isActive(link.path)
+                        ? "text-primary"
+                        : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                    }`}
+                  >
+                    <IconComponent size={18} />
+                    {link.name}
+                  </Link>
+                );
+              })}
               <Link
-                key={link.path}
-                to={link.path}
+                to="/admin"
                 onClick={() => setIsOpen(false)}
-                className={`block px-4 py-3 rounded-lg font-medium transition-all ${
-                  isActive(link.path)
-                    ? "bg-primary text-primary-foreground"
-                    : "text-muted-foreground hover:text-foreground hover:bg-muted"
-                }`}
+                className="flex items-center gap-3 px-4 py-3 text-sm text-muted-foreground hover:text-primary transition-colors"
               >
-                {link.name}
+                <Shield size={18} />
+                Admin Login
               </Link>
-            ))}
-            <Link
-              to="/admin"
-              onClick={() => setIsOpen(false)}
-              className="block px-4 py-3 text-sm text-muted-foreground hover:text-primary transition-colors"
-            >
-              Admin Login
-            </Link>
-            <Button asChild className="w-full mt-4">
-              <Link to="/blog" onClick={() => setIsOpen(false)}>
-                Find Scholarships
-              </Link>
-            </Button>
+              <Button asChild className="w-full mt-4 mx-2">
+                <Link to="/blog" onClick={() => setIsOpen(false)}>
+                  Find Scholarships
+                </Link>
+              </Button>
+            </div>
           </div>
         )}
       </div>
