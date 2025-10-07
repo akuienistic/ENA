@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { ChevronUp } from "lucide-react";
+import { ArrowUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const ScrollToTop = () => {
@@ -35,7 +35,7 @@ const ScrollToTop = () => {
           className="fixed bottom-8 right-8 z-50 rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all animate-fade-in"
           aria-label="Scroll to top"
         >
-          <ChevronUp size={24} />
+          <ArrowUp size={24} />
         </Button>
       )}
     </>
